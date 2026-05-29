@@ -1,0 +1,31 @@
+<h1 class="text-3xl font-black p-6 text-center text-gray-800">Lista de Países</h1>
+
+<div>
+
+  @for(pais of banderaResource.value(); track pais.name.common) {
+    
+    <div >
+      
+      <img 
+        [src]="pais.flags.png" 
+        [alt]="pais.flags.alt" 
+      >
+
+      <h2 >{{ pais.name.common }}</h2>
+      <p>
+        Nativo: {{ getNombreNativo(pais.name.nativeName) }}
+      </p>
+
+      <div>
+        <p><span class="font-bold">Capital:</span> {{ pais.capital?.[0] ?? 'No tiene' }}</p>
+      </div>
+
+    </div>
+
+  } @empty {
+    <div class="col-span-full text-center py-10">
+      <p class="text-lg text-gray-500 font-semibold">Cargando banderas del mundo</p>
+    </div>
+  }
+
+</div>
